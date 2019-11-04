@@ -1,6 +1,5 @@
 <h1> This is the Homepage of HomeFood  </h1>
 
-<%= button_to "Order HomeFood", order_path, :method => :get %>
 <p> </p>
 <p> </p>
 
@@ -9,10 +8,12 @@
 <p> </p>
 <p> </p>
 
-<%= button_to "Who is cooking today?", cooks_path, :method => :get %>
+<%= button_to "Order HomeFood", cooks_path, :method => :get %>
 <p> </p>
 <p> </p>
-
+<%= button_to "Your cooking list", you_cook_path, :method => :get %>
+<p> </p>
+<p> </p>
 
 
 <% if user_signed_in? %>

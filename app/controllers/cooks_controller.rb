@@ -19,7 +19,7 @@ class CooksController < ApplicationController
     end 
 
     def show  
-
+        @cooks = Cook.where(user_id: params[:user_id])
 
     end 
 
@@ -28,7 +28,7 @@ class CooksController < ApplicationController
         @cook = current_user.cooks.find_by_id(id)
     
         if @cook == nil
-            redirect_to cooks_path
+            redirect_to root_path
         end
     end
     

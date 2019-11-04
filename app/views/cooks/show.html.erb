@@ -1,0 +1,18 @@
+<h1> Following is the list of your food item details.  </h1>
+
+
+<% @cooks.each do |cook| %>
+      <tr>
+        <div>         
+            <td>Cooking Address: <%= cook.suburb %>, <%= cook.state %>,</td>
+            <td>Food Category: <%= cook.category %>,</td>
+            <td>Price: <%= cook.price %>,</td>
+            <td>Time needed for cooking: <%= cook.cooking_time %>;</td>
+            <%= image_tag cook.picture if cook.picture.attached? %>
+
+          </div>
+
+        
+      </tr>
+    <% end %>
+
