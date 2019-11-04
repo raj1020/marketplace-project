@@ -1,5 +1,7 @@
 class CooksController < ApplicationController
-    #before_action :authenticate_user!
+    # before_action :authenticate_user!, except: [:home, :index]
+    # before_action :set_cook, only: [:show, :edit, :update, :destroy]
+    # before_action :authorize_user, [:edit, :update, :destroy]
     
     def index 
         @cooks = Cook.all
@@ -13,24 +15,33 @@ class CooksController < ApplicationController
 
     def create 
         
-        @cook=Cook.create(cook_params)
-        redirect_to root_path
+        @cook= current_user.cooks.create(cook_params)
+        redirect_to cooks_path
         
     end 
 
-    def show  
-        @cooks = Cook.where(user_id: params[:user_id])
+    def show 
+         
+        @cooks = Cook.where(user_id: current_user.id)
+        #@cooks = Cook.where(user_id: params[:user_id])
+        #@cooks = current_user.cooks
+        
 
     end 
 
-    def set_user_cook
-        id = params[:id]
-        @cook = current_user.cooks.find_by_id(id)
+    # def authorize_user
+        
     
-        if @cook == nil
-            redirect_to root_path
-        end
-    end
+    #     if @cook.user_id != current_user.id
+    #         redirect_to cooks_path
+    #     end
+    # end
+
+    # def set_cook  
+    #     id = params[:id]
+    #     @cook = Cook.find(id)  
+
+    # end   
     
 
     private 

@@ -1,18 +1,26 @@
 <h1> Following is the list of your food item details.  </h1>
 
+<% if user_signed_in? %>
+        <%= link_to "logout", destroy_user_session_path, method: :delete %>
 
-<% @cooks.each do |cook| %>
-      <tr>
-        <div>         
-            <td>Cooking Address: <%= cook.suburb %>, <%= cook.state %>,</td>
-            <td>Food Category: <%= cook.category %>,</td>
-            <td>Price: <%= cook.price %>,</td>
-            <td>Time needed for cooking: <%= cook.cooking_time %>;</td>
-            <%= image_tag cook.picture if cook.picture.attached? %>
 
-          </div>
+    <% @cooks.each do |cook| %>
+          <tr>
+            <div>         
+                <td>Cooking Address: <%= cook.suburb %>, <%= cook.state %>,</td>
+                <td>Food Category: <%= cook.category %>,</td>
+                <td>Price: <%= cook.price %>,</td>
+                <td>Time needed for cooking: <%= cook.cooking_time %>;</td>
+                <%= image_tag cook.picture if cook.picture.attached? %>
 
-        
-      </tr>
-    <% end %>
+              </div>
+
+            
+          </tr>
+        <% end %>
+
+    <% else %>
+    
+   <div> Please <%= link_to "login", new_user_session_path %> to continue</div>
+<% end %>
 

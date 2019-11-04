@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "/cooks", to: "cooks#index", as: "cooks"
   get "/cooks/new", to: "cooks#new", as: "new_cook"
   post "/cooks/new", to: "cooks#create"
-  get "/cooks/:user_id", to: "cooks#show", as: "you_cook"
+  get "/cooks/:id", to: "cooks#show", as: "cook"
 
   
 
