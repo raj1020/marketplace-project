@@ -4,11 +4,13 @@ Rails.application.routes.draw do
 
   get "/", to: "pages#home", as: "root"
 
-  post "/pages", to: "pages#index"
   get "/pages", to: "pages#index", as: "order"
 
-  post "/cooks", to: "cooks#details"
-  get "/cooks", to: "cooks#details", as: "detail"
+  
+  get "/cooks", to: "cooks#index", as: "cooks"
+  get "/cooks", to: "cooks#new", as: "new_cook"
+  post "/cooks", to: "cooks#create"
+  get "/cooks/:id", to: "cooks#show", as: "cook"
 
   
 

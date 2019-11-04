@@ -1,4 +1,23 @@
 <h1> This is the Homepage of HomeFood  </h1>
 
-<%= button_to "Order HomeFood", order_path %>
-<%= button_to "Cook HomeFood", detail_path %>
+<%= button_to "Order HomeFood", order_path, :method => :get %>
+<p> </p>
+<p> </p>
+
+
+<%= button_to "Cook HomeFood", new_cook_path, :method => :get %>
+<p> </p>
+<p> </p>
+
+<%= button_to "Who is cooking today?", cooks_path, :method => :get %>
+<p> </p>
+<p> </p>
+
+
+
+<% if user_signed_in? %>
+        <%= link_to "logout", destroy_user_session_path, method: :delete %>
+<% else %>
+    
+   <div> Please <%= link_to "login", new_user_session_path %> to continue</div>
+<% end %>

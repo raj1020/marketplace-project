@@ -1,0 +1,19 @@
+<h1> This page is for ordering food.  </h1>
+<h1> Print all the food items that the cooks are cooking along with the photos, price, cooking-time and other cook-details </h1>
+
+
+
+ <% @cooks.each do |cook| %>
+      <tr>
+        <div>         
+            <td>Cooking Address: <%= cook.suburb %>, <%= cook.state %></td>
+            <td>Food Category: <%= cook.category %></td>
+            <td>Price: <%= cook.price %></td>
+            <td>Time needed for cooking: <%= cook.cooking_time %>;</td>
+            <%= image_tag cook.picture if cook.picture.attached? %>
+
+          </div>
+
+        
+      </tr>
+    <% end %>
