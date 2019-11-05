@@ -2,13 +2,12 @@
 
 <% if user_signed_in? %>
     <h2> If you want to edit your food, please select it and click submit  </h2>   
-  <%= button_to "Submit ", edit_cook_path(current_user.id), :method => :get %>
+  <%= button_to "Submit ", edit_cook_path, :method => :get %>
 
     <% @cooks.each do |cook| %>
           <tr>
             <div>  
-            <%= check_box("tag",  {checked: true}) %>  
-               <div>
+<%= link_to "Edit", edit_cook_path(cook)%>               <div>
        
     </div> 
                 <td>Cook-Id: <%= cook.id %></td>

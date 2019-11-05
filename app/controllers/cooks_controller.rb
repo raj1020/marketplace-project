@@ -18,6 +18,7 @@ class CooksController < ApplicationController
         @cook= current_user.cooks.create(cook_params)
         redirect_to cooks_path
         
+        
     end 
 
     def show 
@@ -25,13 +26,16 @@ class CooksController < ApplicationController
         @cooks = Cook.where(user_id: current_user.id)
         #@cooks = Cook.where(user_id: params[:user_id])
         #@cooks = current_user.cooks
+        #@cook = Cook.find(id)
         
 
     end 
 
-    def edit 
+    def edit
+        
         id = params[:id]
         @cook = Cook.find(id)
+        
         
 
         
@@ -42,8 +46,8 @@ class CooksController < ApplicationController
     def update 
         
         @cook = Cook.find(params[:id])
-  @cook.update(street_address: params[:cook][:street_address], suburb: params[:cook][:suburb], postcode: params[:cook][:postcode], state: params[:cook][:state], category: params[:cook][:category], price: params[:cook][:price], cooking_time: params[:cook][:cooking_time], picture: params[:cook][:picture])
-  redirect_to cook_path(@cook)
+        @cook.update(street_address: params[:cook][:street_address], suburb: params[:cook][:suburb], postcode: params[:cook][:postcode], state: params[:cook][:state], category: params[:cook][:category], price: params[:cook][:price], cooking_time: params[:cook][:cooking_time], picture: params[:cook][:picture])
+        redirect_to cook_path(@cook)
     end  
 
 
