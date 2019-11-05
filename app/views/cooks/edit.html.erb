@@ -1,16 +1,12 @@
+<h1> This page is for editing the listings of a particular cook after they login.  </h1>
 
 
-<% if user_signed_in? %>
-    <h1> This page allows the cooks to post details about the foods that they are going to cook.  </h1>
-    <%= button_to "SHow my HomeFood list", cook_path(current_user.id), :method => :get %>
-<p> </p>
-<p> </p>
-
-    <%= form_with(model: @cook, url: new_cook_path, local: true) do |form| %>
+<%= form_with(model: @cook, local: true) do |form| %>
     
     
 
-    
+   
+
     <div>
         <%= form.label :street_address %>
         <%= form.text_field :street_address %>
@@ -50,14 +46,4 @@
     <div>
         <%= form.submit %>
     </div>
-<% end %>
-
-
-
-
-
-    <%= link_to "logout", destroy_user_session_path, method: :delete %>
-<% else %>
-    
-   <div> Please <%= link_to "login", new_user_session_path %> to continue</div>
 <% end %>

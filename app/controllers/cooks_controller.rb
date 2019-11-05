@@ -29,6 +29,25 @@ class CooksController < ApplicationController
 
     end 
 
+    def edit 
+        id = params[:id]
+        @cook = Cook.find(id)
+        
+
+        
+        
+
+    end  
+
+    def update 
+        
+        @cook = Cook.find(params[:id])
+  @cook.update(street_address: params[:cook][:street_address], suburb: params[:cook][:suburb], postcode: params[:cook][:postcode], state: params[:cook][:state], category: params[:cook][:category], price: params[:cook][:price], cooking_time: params[:cook][:cooking_time], picture: params[:cook][:picture])
+  redirect_to cook_path(@cook)
+    end  
+
+
+
     # def authorize_user
         
     

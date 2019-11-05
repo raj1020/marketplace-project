@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "/cooks/new", to: "cooks#new", as: "new_cook"
   post "/cooks/new", to: "cooks#create"
   get "/cooks/:id", to: "cooks#show", as: "cook"
+  get "/cooks/:id/edit", to: "cooks#edit", as: "edit_cook"
+  patch 'cooks/:id', to: 'cooks#update'
 
   
 

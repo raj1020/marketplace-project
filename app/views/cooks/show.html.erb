@@ -1,12 +1,17 @@
 <h1> Following is the list of your food item details.  </h1>
 
 <% if user_signed_in? %>
-        <%= link_to "logout", destroy_user_session_path, method: :delete %>
-
+    <h2> If you want to edit your food, please select it and click submit  </h2>   
+  <%= button_to "Submit ", edit_cook_path(current_user.id), :method => :get %>
 
     <% @cooks.each do |cook| %>
           <tr>
-            <div>         
+            <div>  
+            <%= check_box("tag",  {checked: true}) %>  
+               <div>
+       
+    </div> 
+                <td>Cook-Id: <%= cook.id %></td>
                 <td>Cooking Address: <%= cook.suburb %>, <%= cook.state %>,</td>
                 <td>Food Category: <%= cook.category %>,</td>
                 <td>Price: <%= cook.price %>,</td>
@@ -18,7 +23,7 @@
             
           </tr>
         <% end %>
-
+     <%= link_to "logout", destroy_user_session_path, method: :delete %>
     <% else %>
     
    <div> Please <%= link_to "login", new_user_session_path %> to continue</div>
