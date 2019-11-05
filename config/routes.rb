@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "/cooks/:id", to: "cooks#show", as: "cook"
   get "/cooks/:id/edit", to: "cooks#edit", as: "edit_cook"
   patch 'cooks/:id', to: 'cooks#update'
-
+  delete "/cooks/:id", to: "cooks#destroy", as: "delete"
   
 
 end

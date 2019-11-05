@@ -3,12 +3,11 @@
 <% if user_signed_in? %>
     <h2> If you want to edit your food, please select it and click submit  </h2>   
   <%= button_to "Submit ", edit_cook_path, :method => :get %>
-
+  
     <% @cooks.each do |cook| %>
           <tr>
-            <div>  
-<%= link_to "Edit", edit_cook_path(cook)%>               <div>
-       
+            <div>  <%= link_to "Edit", edit_cook_path(cook)%>               <div>
+            <div>  <%= link_to "Delete", delete_path(cook), method: :delete %>               <div>
     </div> 
                 <td>Cook-Id: <%= cook.id %></td>
                 <td>Cooking Address: <%= cook.suburb %>, <%= cook.state %>,</td>

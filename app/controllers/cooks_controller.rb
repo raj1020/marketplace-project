@@ -50,6 +50,16 @@ class CooksController < ApplicationController
         redirect_to cook_path(@cook)
     end  
 
+    def destroy
+        byebug
+        id = params[:id]
+        @cook= Cook.find(id).destroy 
+        redirect_to cook_path 
+
+        
+
+    end
+
 
 
     # def authorize_user
