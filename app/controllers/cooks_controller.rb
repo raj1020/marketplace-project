@@ -59,7 +59,8 @@ class CooksController < ApplicationController
         id = params[:cook_ids]
         @cook= Cook.find(id)
         @quantity = params[:quantity]
-        byebug
+        @quantity.delete('')
+        
     end  
 
 

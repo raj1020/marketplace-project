@@ -14,7 +14,8 @@
             <td>Time needed for cooking: <%= cook.cooking_time %>;</td>
             <%= image_tag cook.picture if cook.picture.attached? %>
             <%= form.label :quantity %>
-        <%= form.number_field :quantity, min: 0, max: 10 %>
+        <%= form.number_field :quantity, multiple: true, min: 0, max: 10 %>
+                 
             
           </div>
           
