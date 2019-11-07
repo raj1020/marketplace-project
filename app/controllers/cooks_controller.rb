@@ -58,8 +58,14 @@ class CooksController < ApplicationController
     def order  
         id = params[:cook_ids]
         @cook= Cook.find(id)
-        @quantity = params[:quantity]
+       @quantity = params[:quantity]
         @quantity.delete('')
+        @total = []
+        @cook.each_with_index do |cook, index|
+            @total << ((cook.price).to_i*(@quantity[index].to_i))/100.0
+
+        end
+        @grand_total =@total.sum  
         
     end  
 

@@ -3,7 +3,7 @@
 <% if user_signed_in? %>
 
     <h1> List of items that the customer is going to order.  </h1>
-    <%grand_total=0%>
+    
 
 
     <% @cook.each_with_index do |cook, index| %>
@@ -15,14 +15,14 @@
                 <td>Price: <%= cook.price %>,</td>
                 <td>Time needed for cooking: <%= cook.cooking_time %>;</td>
                  <td>Quantity Ordered:<%= @quantity[index] %>;</td>
-                 <td> Total= <%= total= ((cook.price).to_i*(@quantity[index].to_i))/100.0%> AUD </td>
-                 <% grand_total =  grand_total + total %>
+                 <td> Total= <%= @total[index]%> AUD </td>
+                
               </div>
 
             
           </tr>
         <% end %>
-    <div> Grand Total= <%= grand_total %>AUD </div>
+    <div> Grand Total= <%= @grand_total %>AUD </div>
 
     <%= button_to "Proceed to Payment" %>
     <%= link_to "logout", destroy_user_session_path, method: :delete %>
