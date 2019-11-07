@@ -4,16 +4,22 @@ Rails.application.routes.draw do
 
   get "/", to: "pages#home", as: "root"
 
-  # get "/pages", to: "pages#index", as: "order"
 
   
   get "/cooks", to: "cooks#index", as: "cooks"
+  get "/cooks/order", to: "cooks#order", as: "order"
+
   get "/cooks/new", to: "cooks#new", as: "new_cook"
   post "/cooks/new", to: "cooks#create"
   get "/cooks/:id", to: "cooks#show", as: "cook"
   get "/cooks/:id/edit", to: "cooks#edit", as: "edit_cook"
   patch 'cooks/:id', to: 'cooks#update'
+
+  
+  
   delete "/cooks/:id", to: "cooks#destroy", as: "delete"
+
+  
   
 
 end

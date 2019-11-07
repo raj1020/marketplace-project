@@ -35,12 +35,6 @@ class CooksController < ApplicationController
         
         id = params[:id]
         @cook = Cook.find(id)
-        
-        
-
-        
-        
-
     end  
 
     def update 
@@ -50,15 +44,24 @@ class CooksController < ApplicationController
         redirect_to cook_path(@cook)
     end  
 
+    
     def destroy
-        byebug
+        
         id = params[:id]
-        @cook= Cook.find(id).destroy 
+        @cook = Cook.find(params[:id])
         redirect_to cook_path 
 
         
 
     end
+
+    def order  
+        id = params[:cook_ids]
+        @cook= Cook.find(id)
+        @quantity = params[:quantity]
+        byebug
+    end  
+
 
 
 

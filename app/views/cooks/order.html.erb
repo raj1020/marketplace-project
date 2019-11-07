@@ -1,0 +1,29 @@
+<h1> This page lists the food items that the customer is going to order. </h1>
+
+<% if user_signed_in? %>
+
+    <h1> List of items that the customer is going to order.  </h1>
+
+
+    <% @cook.each do |cook| %>
+          <tr>
+                <div>
+                <td>Cook-Id: <%= cook.id %></td>
+                <td>Cooking Address: <%= cook.suburb %>, <%= cook.state %>,</td>
+                <td>Food Category: <%= cook.category %>,</td>
+                <td>Price: <%= cook.price %>,</td>
+                <td>Time needed for cooking: <%= cook.cooking_time %>;</td>
+                 <td>Quantity Ordered: <%= @quantity %>;</td>
+              </div>
+
+            
+          </tr>
+        <% end %>
+    
+
+    <%= link_to "logout", destroy_user_session_path, method: :delete %>
+
+<% else %>
+    
+   <div> Please <%= link_to "login", new_user_session_path %> to continue</div>
+<% end %>
