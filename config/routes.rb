@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   
   delete "/cooks/:id", to: "cooks#destroy", as: "delete"
 
+  get "/orders/success", to: "orders#success", as: "success_order"
+  post "/orders/webhook", to: "orders#webhook", as: "payorder"
   
   
 

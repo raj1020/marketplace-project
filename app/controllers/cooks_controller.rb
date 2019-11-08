@@ -1,5 +1,5 @@
 class CooksController < ApplicationController
-    # before_action :authenticate_user!, except: [:home, :index]
+    before_action :authenticate_user!, except: [:home, :index]
     # before_action :set_cook, only: [:show, :edit, :update, :destroy]
     # before_action :authorize_user, [:edit, :update, :destroy]
     
@@ -55,18 +55,41 @@ class CooksController < ApplicationController
 
     end
 
-    def order  
+    def order 
+
         id = params[:cook_ids]
         @cook= Cook.find(id)
        @quantity = params[:quantity]
         @quantity.delete('')
         @total = []
+        line_items = []
         @cook.each_with_index do |cook, index|
             @total << ((cook.price).to_i*(@quantity[index].to_i))/100.0
-
+            line_items << {
+            name: cook.suburb,
+            description: cook.category,
+            amount: cook.price,
+            currency: 'aud',
+            quantity: @quantity[index]}
         end
         @grand_total =@total.sum  
+
         
+
+session = Stripe::Checkout::Session.create(
+  payment_method_types: ['card'],
+  line_items: line_items,
+  payment_intent_data: {
+    metadata: {
+        user_id: current_user.id,
+        
+    }
+  },
+  success_url: root_url + "orders/success",
+  cancel_url: root_url + "cook"
+
+)
+    @session_id = session.id     
     end  
 
 

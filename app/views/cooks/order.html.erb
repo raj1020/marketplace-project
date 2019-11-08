@@ -24,10 +24,26 @@
         <% end %>
     <div> Grand Total= <%= @grand_total %>AUD </div>
 
-    <%= button_to "Proceed to Payment" %>
+    <button data-stripe="buy"> Proceed to Payment</button>
+
     <%= link_to "logout", destroy_user_session_path, method: :delete %>
 
 <% else %>
     
    <div> Please <%= link_to "login", new_user_session_path %> to continue</div>
 <% end %>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    
+    document.querySelector("[data-stripe='buy']").addEventListener("click", ()=>{
+        console.log("HEEEERE")
+        const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public)%>");
+        stripe.redirectToCheckout({
+        sessionId: "<%= @session_id %>"
+        })
+
+    });
+</script>
+

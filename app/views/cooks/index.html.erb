@@ -24,3 +24,21 @@
     <% end %>
     <div>   <%= form.submit "Order Now" %>  <div>
 <%end%>
+
+
+
+
+
+
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    document.querySelector("[data-stripe='buy']").addEventListener("click", () => {
+        const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public) %>");
+        
+        stripe.redirectToCheckout({
+          sessionId: "<%= @session_id %>"
+        });
+    });
+</script>
