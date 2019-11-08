@@ -85,7 +85,7 @@ session = Stripe::Checkout::Session.create(
         
     }
   },
-  success_url: root_url + "orders/success",
+  success_url: root_url + "orders/success?user_id=#{current_user.id}, cook_id=#{id}, ",
   cancel_url: root_url + "cook"
 
 )
