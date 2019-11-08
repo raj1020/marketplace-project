@@ -23,4 +23,18 @@ class ApplicationController < ActionController::Base
       stored_location_for(resource_or_scope) || super
     end
 
+
+    protect_from_forgery with: :exception
+
+     before_action :configure_permitted_parameters, if: :devise_controller?
+
+     protected
+
+          def configure_permitted_parameters
+               devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :street_address, :suburb, :postcode, :state, :email, :password)}
+
+               devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :street_address, :suburb, :postcode, :state, :email, :password, :current_password)}
+          end
+
+
 end
