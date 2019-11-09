@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:webhook]
     
     def success
-        byebug
+        
         order = Order.new(
             user_id: params[:user_id],
             cook_id: params[:cook_id],

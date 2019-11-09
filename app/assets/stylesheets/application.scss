@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+ body {background-color:#0bf5fd42}
+
+ div {
+        padding: 20px, 20px, 20px, 20px;
+
+ }
+
+ .image  {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    height: auto;
+    width: 100%;
+ }
+
+ .button {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 20px, 20px, 20px, 20px;
+
+ }
+
+ 

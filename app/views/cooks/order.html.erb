@@ -1,49 +1,51 @@
-<h1> This page lists the food items that the customer is going to order. </h1>
+<body>
+    <h1> This page lists the food items that the customer is going to order. </h1>
 
-<% if user_signed_in? %>
+    <% if user_signed_in? %>
 
-    <h1> List of items that the customer is going to order.  </h1>
-    
+        <h1> List of items that the customer is going to order.  </h1>
+        
 
 
-    <% @cook.each_with_index do |cook, index| %>
-          <tr>
-                <div>
-                <td>Cook-Id: <%= cook.id %></td>
-                <td>Cooking Address: <%= cook.suburb %>, <%= cook.state %>,</td>
-                <td>Food Category: <%= cook.category %>,</td>
-                <td>Price: <%= cook.price %>,</td>
-                <td>Time needed for cooking: <%= cook.cooking_time %>;</td>
-                 <td>Quantity Ordered:<%= @quantity[index] %>;</td>
-                 <td> Total= <%= @total[index]%> AUD </td>
+        <% @cook.each_with_index do |cook, index| %>
+            <tr>
+                    <div>
+                    <td>Cook-Id: <%= cook.id %></td>
+                    <td>Cooking Address: <%= cook.suburb %>, <%= cook.state %>,</td>
+                    <td>Food Category: <%= cook.category %>,</td>
+                    <td>Price: <%= cook.price %>,</td>
+                    <td>Time needed for cooking: <%= cook.cooking_time %>;</td>
+                    <td>Quantity Ordered:<%= @quantity[index] %>;</td>
+                    <td> Total= <%= @total[index]%> AUD </td>
+                    
+                </div>
+
                 
-              </div>
+            </tr>
+            <% end %>
+        <div> Grand Total= <%= @grand_total %>AUD </div>
 
-            
-          </tr>
-        <% end %>
-    <div> Grand Total= <%= @grand_total %>AUD </div>
+        <button data-stripe="buy"> Proceed to Payment</button>
 
-    <button data-stripe="buy"> Proceed to Payment</button>
+        <%= link_to "logout", destroy_user_session_path, method: :delete %>
 
-    <%= link_to "logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+        
+    <div> Please <%= link_to "login", new_user_session_path %> to continue</div>
+    <% end %>
 
-<% else %>
-    
-   <div> Please <%= link_to "login", new_user_session_path %> to continue</div>
-<% end %>
+    <script src="https://js.stripe.com/v3/"></script>
 
-<script src="https://js.stripe.com/v3/"></script>
+    <script>
+        
+        document.querySelector("[data-stripe='buy']").addEventListener("click", ()=>{
+            console.log("HEEEERE")
+            const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public)%>");
+            stripe.redirectToCheckout({
+            sessionId: "<%= @session_id %>"
+            })
 
-<script>
-    
-    document.querySelector("[data-stripe='buy']").addEventListener("click", ()=>{
-        console.log("HEEEERE")
-        const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public)%>");
-        stripe.redirectToCheckout({
-        sessionId: "<%= @session_id %>"
-        })
-
-    });
-</script>
+        });
+    </script>
+</body>
 

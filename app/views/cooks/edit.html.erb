@@ -1,52 +1,54 @@
-<h1> This page is for editing the listings of a particular cook after they login.  </h1>
+<body>
+    <h1> This page is for editing the listings of a particular cook after they login.  </h1>
 
 
-<%= form_with(model: @cook, local: true) do |form| %>
+    <%= form_with(model: @cook, local: true) do |form| %>
+        
+        <div>
+            <%= form.label :cook_id %>
+            <%= form.text_field :cook_id %>
+        </div>
+
     
-    <div>
-        <%= form.label :cook_id %>
-        <%= form.text_field :cook_id %>
-    </div>
 
-   
-
-    <div>
-        <%= form.label :street_address %>
-        <%= form.text_field :street_address %>
-    </div>
-    <div>
-        <%= form.label :suburb %>
-        <%= form.text_field :suburb %>
-    </div>
-    <div>
-        <%= form.label :postcode %>
-        <%= form.text_field :postcode %>
-    </div>
-    <div>
-        <%= form.label :state %>
-        <%= form.text_field :state %>
-    </div>
-    <div>
-        <%= form.label :user_id %>
-        <%= form.number_field :user_id, min: 0 %>
-    </div>
-    <div>
-        <%= form.label :category %>
-        <%= form.text_field :category %>
-    </div>
-    <div>
-        <%= form.label :price %>
-        <%= form.number_field :price, min: 0 %>
-    </div>
-    <div>
-        <%= form.label :cooking_time %>
-        <%= form.number_field :cooking_time, min: 0 %>
-    </div>
-    <div>
-        <%= form.label :picture %>
-        <%= form.file_field :picture, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
-    </div>
-    <div>
-        <%= form.submit %>
-    </div>
-<% end %>
+        <div>
+            <%= form.label :street_address %>
+            <%= form.text_field :street_address %>
+        </div>
+        <div>
+            <%= form.label :suburb %>
+            <%= form.text_field :suburb %>
+        </div>
+        <div>
+            <%= form.label :postcode %>
+            <%= form.text_field :postcode %>
+        </div>
+        <div>
+            <%= form.label :state %>
+            <%= form.text_field :state %>
+        </div>
+        <div>
+            <%= form.label :user_id %>
+            <%= form.number_field :user_id, min: 0 %>
+        </div>
+        <div>
+            <%= form.label :category %>
+            <%= form.text_field :category %>
+        </div>
+        <div>
+            <%= form.label :price %>
+            <%= form.number_field :price, min: 0 %>
+        </div>
+        <div>
+            <%= form.label :cooking_time %>
+            <%= form.number_field :cooking_time, min: 0 %>
+        </div>
+        <div>
+            <%= form.label :picture %>
+            <%= form.file_field :picture, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+        </div>
+        <div>
+            <%= form.submit %>
+        </div>
+    <% end %>
+</body>

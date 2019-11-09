@@ -1,21 +1,21 @@
-<h1> This is the Homepage of HomeFood  </h1>
-
-<p> </p>
-<p> </p>
-
-
-<%= button_to "Cook HomeFood", new_cook_path, :method => :get %>
-<p> </p>
-<p> </p>
-
-<%= button_to "Order HomeFood", cooks_path, :method => :get %>
-<p> </p>
-<p> </p>
+<body>
+        <h1> This is the Homepage of HomeFood  </h1>
+        <p> Here you can purchase tasty and healthy homemade food to make you feel at home. </p>
 
 
-<% if user_signed_in? %>
-        <%= link_to "logout", destroy_user_session_path, method: :delete %>
-<% else %>
-    
-   <div> Please <%= link_to "login", new_user_session_path %> to continue</div>
-<% end %>
+        <div class="button"> <%= button_to "Cook HomeFood", new_cook_path, :method => :get %>  </div>
+
+        
+
+        <div class="button"> <%= button_to "Order HomeFood", cooks_path, :method => :get %> </div>
+       
+
+
+        <% if user_signed_in? %>
+                <%= link_to "logout", destroy_user_session_path, method: :delete %>
+        <% else %>
+        
+        <div> Please <%= link_to "login", new_user_session_path %> to continue</div>
+        <% end %>
+
+</body>
